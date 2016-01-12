@@ -11,7 +11,7 @@ public class App
 {
 	@RequestMapping("/")
 	public String hello(){
-		return "as大手大脚凯撒鹿鼎记萨阿萨德撒旦撒打算拉";
+		return "123213213";
 	}
 	
     public static void main( String[] args )
