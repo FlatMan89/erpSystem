@@ -3,12 +3,11 @@ package com.zcyp.erpSystem.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zcyp.erpSystem.dao.UserDao;
 import com.zcyp.erpSystem.model.User;
 import com.zcyp.erpSystem.service.UserService;
 
@@ -17,6 +16,9 @@ import com.zcyp.erpSystem.service.UserService;
 public class UserController {
 	@Autowired
 	UserService userservice;
+	
+	@Autowired
+	UserDao userdao;
 	
 	@RequestMapping("/{id}")
 	public User view(@PathVariable("id") Long id){
@@ -41,5 +43,10 @@ public class UserController {
 	@RequestMapping("/save")
 	public User saveUser(User user){
 		return userservice.saveUser(user);
+	}
+	
+	@RequestMapping("/get-users-by-name/{name}")
+	public List<User> getUsersByName(@PathVariable("name") String name) {
+		return userdao.findUsersByName(name);
 	}
 }

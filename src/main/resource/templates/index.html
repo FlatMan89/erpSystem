@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  
-  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"  
-  layout:decorator="layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"></meta>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 th:text="${message.id}">保存冲成功 {user.name}</h1>
+	<ul th:each="user:${users}" th:object="${user}">
+		<li><span th:text="*{id}"></span>----<span th:text="*{name}"></span></li>
+	</ul>
 </body>
 </html>

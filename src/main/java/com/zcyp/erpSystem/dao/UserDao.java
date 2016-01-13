@@ -16,6 +16,13 @@ public interface UserDao extends CrudRepository<User, Long> {
 	 */
 	public User findByName(String name);
 	
+	
+	/**
+	 * 根据姓名查找多个用户
+	 * @return
+	 */
+	public List<User> findUsersByName(String name);
+	
 	/**
 	 * 根据 ID 查找
 	 * @param id
