@@ -3,6 +3,7 @@ package com.zcyp.erpSystem.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,5 +49,11 @@ public class UserController {
 	@RequestMapping("/get-users-by-name/{name}")
 	public List<User> getUsersByName(@PathVariable("name") String name) {
 		return userdao.findUsersByName(name);
+	}
+	
+	@RequestMapping("/list/{page}/{size}")
+	public List<User> getList(@PathVariable("page") int page,@PathVariable("size") int size){
+		Page<User> userPage = userservice.findAll(page, size);
+		return userPage.getContent();
 	}
 }
