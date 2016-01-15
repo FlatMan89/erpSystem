@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.zcyp.erpSystem.model.Role;
 import com.zcyp.erpSystem.model.User;
 
+
 @Transactional
 public interface UserDao extends PagingAndSortingRepository<User, Long>{
 	/**
@@ -49,6 +50,6 @@ public interface UserDao extends PagingAndSortingRepository<User, Long>{
 	 * @param role
 	 * @return
 	 */
-	public List<User> findByRole(Role role);
+	//public List<User> findByRole(Role role);
 	
 }
