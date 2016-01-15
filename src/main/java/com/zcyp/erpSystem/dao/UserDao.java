@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.zcyp.erpSystem.model.Role;
 import com.zcyp.erpSystem.model.User;
 
 @Transactional
@@ -43,5 +43,12 @@ public interface UserDao extends PagingAndSortingRepository<User, Long>{
 	 */
 	@Override
 	public Page<User> findAll(Pageable pageable);
+
+	/**
+	 * 
+	 * @param role
+	 * @return
+	 */
+	public List<User> findByRole(Role role);
 	
 }

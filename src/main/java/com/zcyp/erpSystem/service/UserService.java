@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.zcyp.erpSystem.dao.UserDao;
+import com.zcyp.erpSystem.model.Role;
 import com.zcyp.erpSystem.model.User;
 
 @Service
@@ -34,6 +35,10 @@ public class UserService {
 	
 	public Page<User> findAll(int page,int size){
 		return userdao.findAll(new PageRequest(page, size));
+	}
+	
+	public List<User> findByRoleId(Role role){
+		return userdao.findByRole(role);
 	}
 	
 }

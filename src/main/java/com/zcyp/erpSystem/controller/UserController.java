@@ -2,6 +2,8 @@ package com.zcyp.erpSystem.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,9 @@ import com.zcyp.erpSystem.service.UserService;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class); 
+	
 	@Autowired
 	UserService userservice;
 	
@@ -53,6 +58,7 @@ public class UserController {
 	
 	@RequestMapping("/list/{page}/{size}")
 	public List<User> getList(@PathVariable("page") int page,@PathVariable("size") int size){
+		LOGGER.debug("进入了分页查询！！！！");
 		Page<User> userPage = userservice.findAll(page, size);
 		return userPage.getContent();
 	}
